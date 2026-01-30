@@ -1,0 +1,334 @@
+/* =========================
+   MKF - Tema Preto (clean + interativo)
+   Sem mexer na programação base
+   ========================= */
+
+/* Reset leve + melhor rendering */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root{
+  /* Base */
+  --bg: #0b0c0f;           /* fundo principal */
+  --bg-2: #0f1117;         /* variação para blocos */
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.10);
+  --border-2: rgba(255,255,255,0.14);
+
+  /* Texto */
+  --text: #e9e9e9;
+  --muted: rgba(233,233,233,0.70);
+
+  /* Destaque (continua preto, mas com “luz” sutil) */
+  --glow: rgba(255,255,255,0.12);
+
+  /* Layout */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 18px 45px rgba(0,0,0,0.45);
+  --shadow-soft: 0 10px 25px rgba(0,0,0,0.35);
+
+  /* Espaçamento */
+  --container: 980px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* mantive sua base pra não depender de fontes externas */
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,0.06), transparent 60%),
+              radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,0.04), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* =========================
+   TOPO / HEADER
+   ========================= */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(10px);
+
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 175px; /* parecido com o seu 180px, mas encaixa melhor */
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45));
+}
+
+/* =========================
+   MENU
+   ========================= */
+nav {
+  margin-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+nav a:active {
+  transform: translateY(0px);
+}
+
+/* Foco acessível (teclado) */
+nav a:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 2px;
+}
+
+/* =========================
+   BANNER (se existir no index)
+   ========================= */
+.banner {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 70%);
+  padding: 90px 20px 70px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.banner h2 {
+  font-size: clamp(26px, 3.2vw, 40px);
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.banner p {
+  max-width: 720px;
+  margin: 10px auto 0;
+  color: var(--muted);
+}
+
+/* =========================
+   SEÇÕES (container + visual clean)
+   ========================= */
+section {
+  padding: 64px 18px;
+}
+
+/* “container” automático: centraliza tudo dentro da section sem mexer no HTML */
+section > * {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section h2 {
+  text-align: center;
+  margin: 0 0 18px 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: 0.2px;
+}
+
+section p {
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* =========================
+   LISTAS (Serviços vira “cards” automaticamente)
+   ========================= */
+section ul {
+  list-style: none;
+  padding: 0;
+  margin: 22px auto 0;
+  max-width: 860px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+section li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 16px 16px 44px;
+  position: relative;
+
+  box-shadow: var(--shadow-soft);
+  transition: transform .15s ease, border-color .2s ease, background .2s ease;
+}
+
+section li::before{
+  content: "✓";
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.92);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+section li:hover{
+  transform: translateY(-2px);
+  border-color: var(--border-2);
+  background: rgba(255,255,255,0.055);
+}
+
+/* =========================
+   FORMULÁRIOS (melhor UI + foco)
+   ========================= */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  margin: 26px auto 0;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+form input {
+  margin: 9px 0;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.55);
+  color: var(--text);
+
+  transition: border-color .2s ease, transform .12s ease, background .2s ease;
+}
+
+form input::placeholder{
+  color: rgba(233,233,233,0.55);
+}
+
+form input:focus{
+  outline: none;
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(0,0,0,0.62);
+  transform: translateY(-1px);
+}
+
+form button {
+  margin-top: 12px;
+  padding: 12px 14px;
+
+  background: rgba(255,255,255,0.06);
+  color: white;
+
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+form button:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+form button:active{
+  transform: translateY(0px);
+}
+
+form button:focus-visible{
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 2px;
+}
+
+/* =========================
+   RODAPÉ
+   ========================= */
+footer {
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(235, 227, 227, 0.08);
+
+  padding: 26px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 768px) {
+  .topo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 14px;
+  }
+
+  nav {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 15px;
+    padding: 9px 12px;
+  }
+
+  section {
+    padding: 50px 14px;
+  }
+
+  section ul {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  form {
+    max-width: 95%;
+  }
+}
