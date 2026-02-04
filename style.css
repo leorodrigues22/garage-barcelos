@@ -130,29 +130,29 @@ footer {
 /* BOTÕES FLUTUANTES - WHATSAPP + INSTAGRAM */
 .floating-buttons {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  z-index: 999;
+  gap: 12px;
+  z-index: 9999;
 }
 
 .float-btn {
-  width: 62px;
-  height: 62px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .float-btn img {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 }
 
 .float-btn.whatsapp {
@@ -164,23 +164,23 @@ footer {
 }
 
 .float-btn:hover {
-  transform: scale(1.12);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 768px) {
   .floating-buttons {
-    bottom: 18px;
-    right: 18px;
+    bottom: 15px;
+    right: 15px;
   }
 
   .float-btn {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
   }
 
   .float-btn img {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
   }
 }
