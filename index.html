@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>KMA Manutenção | Elétrica e Predial Profissional</title>
 
-  <meta name="description" content="KMA Manutenção especializada em manutenção elétrica, predial e suporte técnico. Atendimento rápido via WhatsApp.">
+  <meta name="description" content="KMA Manutenção especializada em manutenção elétrica e predial. Atendimento rápido com contato direto pelo WhatsApp.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- SEU CSS (sem mudar nada) -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,11 +25,10 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
   <h1>Soluções Profissionais em Manutenção</h1>
   <p>
-    Atendimento especializado em manutenção elétrica, predial e suporte técnico,
+    Atendimento especializado em manutenção elétrica e predial,
     com segurança, qualidade e compromisso.
   </p>
 
@@ -44,65 +41,59 @@
   </a>
 </section>
 
-<!-- SERVIÇOS -->
 <section class="section" id="servicos">
   <h2>Nossos Serviços</h2>
 
   <div class="cards">
 
-    <a href="#eletrica" class="card-link">
-      <div class="card">
-        <h3>Manutenção Elétrica</h3>
-        <p>Instalações, correções e reparos elétricos seguindo normas de segurança.</p>
-      </div>
-    </a>
+    <!-- MANUTENÇÃO ELÉTRICA -->
+    <div class="card" onclick="toggleServico('eletrica')">
+      <h3>Manutenção Elétrica</h3>
+      <p>Instalações, correções e reparos elétricos seguindo normas de segurança.</p>
 
-    <a href="#predial" class="card-link">
-      <div class="card">
-        <h3>Manutenção Predial</h3>
-        <p>Reparos, ajustes e conservação de imóveis residenciais e comerciais.</p>
+      <div class="servico-detalhe" id="eletrica">
+        <p>
+          • Instalações elétricas residenciais e comerciais<br>
+          • Troca de disjuntores e tomadas<br>
+          • Iluminação interna e externa<br>
+          • Correção de curtos e falhas
+        </p>
       </div>
-    </a>
+    </div>
 
-    <a href="#suporte" class="card-link">
-      <div class="card">
-        <h3>Suporte Técnico</h3>
-        <p>Soluções rápidas com atendimento profissional e eficiente.</p>
+    <!-- MANUTENÇÃO PREDIAL -->
+    <div class="card" onclick="toggleServico('predial')">
+      <h3>Manutenção Predial</h3>
+      <p>Reparos, ajustes e conservação de imóveis.</p>
+
+      <div class="servico-detalhe" id="predial">
+        <p>
+          • Reparos estruturais<br>
+          • Pintura e acabamento<br>
+          • Manutenção geral predial<br>
+          • Ajustes hidráulicos básicos
+        </p>
       </div>
-    </a>
+    </div>
+
+    <!-- SUPORTE TÉCNICO -->
+    <div class="card" onclick="toggleServico('suporte')">
+      <h3>Suporte Técnico</h3>
+      <p>Soluções rápidas com atendimento profissional.</p>
+
+      <div class="servico-detalhe" id="suporte">
+        <p>
+          • Atendimento emergencial<br>
+          • Diagnóstico técnico<br>
+          • Suporte preventivo<br>
+          • Acompanhamento técnico
+        </p>
+      </div>
+    </div>
 
   </div>
 </section>
 
-<!-- ELÉTRICA -->
-<section class="section" id="eletrica">
-  <h2>Manutenção Elétrica</h2>
-  <p class="center">
-    Trabalhamos com instalações elétricas, manutenção preventiva,
-    correção de falhas, troca de disjuntores, tomadas, iluminação
-    e adequações conforme normas de segurança.
-  </p>
-</section>
-
-<!-- PREDIAL -->
-<section class="section" id="predial">
-  <h2>Manutenção Predial</h2>
-  <p class="center">
-    Serviços de manutenção e conservação predial, reparos estruturais,
-    ajustes, pintura e correções gerais para residências e empresas.
-  </p>
-</section>
-
-<!-- SUPORTE -->
-<section class="section" id="suporte">
-  <h2>Suporte Técnico</h2>
-  <p class="center">
-    Atendimento técnico rápido, diagnóstico preciso e suporte preventivo
-    para resolver problemas elétricos, prediais e operacionais.
-  </p>
-</section>
-
-<!-- SOBRE -->
 <section class="section" id="sobre">
   <h2>Sobre a KMA Manutenção</h2>
   <p class="center">
@@ -120,7 +111,7 @@
 <div class="floating-buttons">
 
   <a
-    href="https://wa.me/5549999419293?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento."
+    href="https://wa.me/5549999419293"
     class="float-btn whatsapp"
     target="_blank"
   >
@@ -136,6 +127,25 @@
   </a>
 
 </div>
+
+<script>
+  function toggleServico(id) {
+    const servico = document.getElementById(id);
+
+    if (servico.style.maxHeight) {
+      servico.style.maxHeight = null;
+      servico.style.opacity = "0";
+    } else {
+      document.querySelectorAll('.servico-detalhe').forEach(el => {
+        el.style.maxHeight = null;
+        el.style.opacity = "0";
+      });
+
+      servico.style.maxHeight = servico.scrollHeight + "px";
+      servico.style.opacity = "1";
+    }
+  }
+</script>
 
 </body>
 </html>
