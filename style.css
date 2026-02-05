@@ -317,6 +317,26 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+header nav {
+  display: flex;
+  gap: 20px; /* espaçamento entre os links */
+  flex-wrap: wrap; /* permite quebrar para a próxima linha */
+  justify-content: center;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column; /* empilha os links */
+    gap: 12px;
+  }
+}
 
 }
 
