@@ -229,3 +229,26 @@ footer {
   transform: scale(1.12);
   box-shadow: 0 12px 28px rgba(0,0,0,0.6);
 }
+/* GARANTE TEXTO DOS CARDS SEMPRE BRANCO */
+.cards-servicos,
+.cards-servicos *,
+.card,
+.card * {
+  color: #fff !important;
+}
+/* REMOVE SUBLINHADO AZUL E COR DE LINKS (PC + CELULAR) */
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+/* Caso os cards inteiros sejam links */
+.card a,
+.card a * {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
