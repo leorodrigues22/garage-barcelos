@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <img src="logo.png" class="logo" alt="Logo KMA">
 
@@ -24,6 +25,7 @@
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero" id="inicio">
   <h1>Soluções Profissionais em Manutenção</h1>
   <p>Atendimento especializado com segurança, qualidade e compromisso.</p>
@@ -33,30 +35,35 @@
   </a>
 </section>
 
-<!-- SERVIÇOS (SEM <a>, SEM AZUL) -->
+<!-- SERVIÇOS -->
 <section class="section" id="servicos">
   <h2>Nossos Serviços</h2>
 
   <div class="cards">
+    <a href="eletrica.html" class="card-link">
+      <div class="card">
+        <h3>Manutenção Elétrica</h3>
+        <p>Instalações e reparos elétricos profissionais.</p>
+      </div>
+    </a>
 
-    <div class="card" onclick="location.href='eletrica.html'">
-      <h3>Manutenção Elétrica</h3>
-      <p>Instalações e reparos elétricos profissionais.</p>
-    </div>
+    <a href="predial.html" class="card-link">
+      <div class="card">
+        <h3>Manutenção Predial</h3>
+        <p>Reparos e conservação de imóveis.</p>
+      </div>
+    </a>
 
-    <div class="card" onclick="location.href='predial.html'">
-      <h3>Manutenção Predial</h3>
-      <p>Reparos e conservação de imóveis.</p>
-    </div>
-
-    <div class="card" onclick="location.href='suporte.html'">
-      <h3>Suporte Técnico</h3>
-      <p>Atendimento rápido e eficiente.</p>
-    </div>
-
+    <a href="suporte.html" class="card-link">
+      <div class="card">
+        <h3>Suporte Técnico</h3>
+        <p>Atendimento rápido e eficiente.</p>
+      </div>
+    </a>
   </div>
 </section>
 
+<!-- SOBRE -->
 <section class="section" id="sobre">
   <h2>Sobre a KMA Manutenção</h2>
 
@@ -67,7 +74,6 @@
   </p>
 
   <div class="cards">
-
     <div class="card">
       <img src="img/eletrica.jpg" alt="Serviços elétricos profissionais">
       <p>Serviços elétricos executados com segurança e precisão</p>
@@ -82,10 +88,10 @@
       <img src="img/ferramentas.jpg" alt="Ferramentas profissionais">
       <p>Ferramentas profissionais e trabalho bem planejado</p>
     </div>
-
   </div>
 </section>
 
+<!-- LOCALIZAÇÃO -->
 <section class="section" id="localizacao">
   <h2>Localização</h2>
 
@@ -95,20 +101,21 @@
   </p>
 
   <div class="info-empresa">
-
     <div class="info-texto">
-      <p><strong>📍 Endereço:</strong><br>
+      <p>
+        <strong>📍 Endereço:</strong><br>
         R. Adelino de Souza Pinto – Bom Retiro<br>
         Chapecó – SC, 89811-232
       </p>
 
-      <p><strong>⏰ Horário de funcionamento:</strong><br>
+      <p>
+        <strong>⏰ Horário:</strong><br>
         Segunda a Sexta — 07:30 às 18:30
       </p>
     </div>
 
     <div class="info-mapa">
-      <iframe 
+      <iframe
         src="https://www.google.com/maps?q=R.%20Adelino%20de%20Souza%20Pinto%20Bom%20Retiro%20Chapec%C3%B3%20SC&output=embed"
         width="100%"
         height="250"
@@ -116,10 +123,10 @@
         loading="lazy">
       </iframe>
     </div>
-
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2026 KMA Manutenção
 </footer>
