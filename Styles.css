@@ -1,0 +1,280 @@
+/* =====================
+   CONFIG GERAL
+===================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: Inter, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+/* =====================
+   HERO RESPONSIVA PREMIUM
+===================== */
+
+.hero {
+  position: relative;
+  width: 92%;
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 120px 40px;
+  text-align: center;
+  color: rgb(20, 20, 20);
+  background: url('https://images.unsplash.com/photo-1581091215367-59ab6b39e5d2') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(14,128,235,0.75), rgba(10,78,224,0.6));
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 750px;
+  margin: 0 auto 30px auto;
+  opacity: 0.95;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+
+.navbar-brand img {
+  height: 60px;
+}
+
+.nav-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+  transition: 0.18s ease;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background: rgba(11,99,216,0.08);
+  color: #0b63d8;
+}
+
+/* =====================
+   CARDS
+===================== */
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-body {
+  text-align: center;
+  font-size: 0.95rem;
+  padding: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* IMAGEM DA FROTA (NÃO CORTA) */
+.card-img-top {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+
+/* =====================
+   BOTÕES
+===================== */
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn-cta {
+  background-color: #1360b8;
+  border: none;
+}
+
+.btn-cta:hover {
+  background-color: #0f3ac9;
+  transform: scale(1.05);
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+footer {
+  background: #ffffff;
+  padding: 20px 10px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+/* =====================
+   BOTÕES FLUTUANTES
+===================== */
+
+.whatsapp-float,
+.instagram-float {
+  position: fixed;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #0a0a0a;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.whatsapp-float {
+  bottom: 20px;
+  background: #25D366;
+}
+
+.instagram-float {
+  bottom: 90px;
+  background: #E1306C;
+}
+
+/* =====================
+   MAPA
+===================== */
+
+.mapa-pc iframe {
+  border-radius: 16px;
+}
+
+/* =====================
+   RESPONSIVO
+===================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    width: 95%;
+    padding: 80px 20px;
+    border-radius: 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .card-img-top {
+    height: 200px;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .hero {
+    min-height: 350px;
+    padding: 100px 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .navbar-nav {
+    gap: 12px;
+  }
+
+  .card-img-top {
+    height: 260px;
+  }
+/* Centraliza todas as seções principais */
+section {
+  text-align: center;
+}
+
+/* Centraliza títulos */
+section h1,
+section h2,
+section h3 {
+  text-align: center;
+}
+
+/* Centraliza parágrafos e limita largura (leitura melhor) */
+section p {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Centraliza listas */
+section ul {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Centraliza cards dentro das rows */
+.row {
+  justify-content: center;
+}
+
+/* Centraliza conteúdo dos cards */
+.card,
+.card-body {
+  text-align: center;
+}
+
+}
