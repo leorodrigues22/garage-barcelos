@@ -122,6 +122,7 @@ a{ color:inherit }
   background:linear-gradient(180deg,var(--panel-2),var(--panel));
   padding:26px; border-radius:18px; border:1px solid var(--line);
   box-shadow:var(--shadow); transition:.35s ease;
+  text-align:center; /* centraliza conteúdo dentro do card */
 }
 .card h3{ margin:0 0 10px; font-size:20px }
 .card p{ color:var(--muted); line-height:1.6 }
@@ -175,70 +176,44 @@ iframe{ filter:grayscale(15%) contrast(1.05) }
 }
 
 /* ================= Extra: Resultados / Mídias ================= */
-/* Caso use os mesmos estilos na página resultados.html */
 .product img, .media img, .media video{ border-radius:5px }
 
-/* Vídeos responsivos opcionais (se colocar vídeos no index algum dia) */
-.video-container{ width:min(90vw, 500px); margin:0 auto }
-.video-container video{ width:100%; height:auto; display:block; border-radius:5px }
-.video-caption{ margin-top:10px; text-align:center; color:var(--muted) }
-
-/* ================= Utilitários e responsivo ================= */
-.titulo-vermelho{ color:var(--brand) }
-
-@media(max-width:500px){
-  .hero p{ font-size:16px }
-}
 /* ====== Grid de mídias (Resultados) ====== */
 .media-grid{
-  display: grid;
+  display: flex;
+  flex-wrap: wrap}
+
+/* ====== Estilos específicos para resultados.html ====== */
+
+/* Grid de mídias */
+.media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centraliza os cards */
   gap: 22px;
-  grid-template-columns: 1fr; /* mobile */
-}
-@media (min-width: 740px){
-  .media-grid{ grid-template-columns: repeat(2, 1fr); } /* desktop */
 }
 
-/* Container e vídeo responsivo com limite de largura */
-.video-container{
-  width: min(90vw, 500px);
+/* Container dos vídeos */
+.video-container {
+  width: min(80vw, 360px); /* vídeos menores e centralizados */
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
-.video-container video{
+
+/* Vídeos */
+.video-container video {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 20px; /* acompanha seu padrão */
-  /* Se quiser travar em 16:9:
-     aspect-ratio: 16 / 9;
-     object-fit: cover;
-  */
+  border-radius: 14px;
 }
-.video-caption{
+
+/* Legenda dos vídeos */
+.video-caption {
   margin-top: 10px;
   text-align: center;
   color: var(--muted);
 }
 
-/* ====== Lightbox (com transição) ====== */
-#lightbox{
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.9);
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-  backdrop-filter:blur(2px);
-  opacity:0; pointer-events:none; transition:.25s;
-  z-index: 9999;
-  cursor: zoom-out;
-}
-#lightbox.open{ opacity:1; pointer-events:auto; }
-#lightbox img{
-  max-width:92vw; max-height:90vh; border-radius:14px;
-  box-shadow:0 0 30px rgba(255,255,255,.15);
-}
-#lightbox-close{
-  position:absolute; top:18px; right:18px;
-  background:#000; border:1px solid var(--line); color:#fff;
-  border-radius:10px; padding:8px 12px; cursor:pointer;
-  font-size:20px; line-height:1;
-}
+
