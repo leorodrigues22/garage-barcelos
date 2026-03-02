@@ -60,25 +60,25 @@
 
       <div class="grid cards-4 mt-24">
         <article class="card product">
-          <img class="rounded zoomable" src="produto1.png" alt="Shampoo Automotivo Premium" />
+          <img class="rounded" src="produto1.png" alt="Shampoo Automotivo Premium" />
           <h3>Shampoo Automotivo Premium</h3>
           <p>Limpeza profunda e brilho intenso</p>
         </article>
 
         <article class="card product">
-          <img class="rounded zoomable" src="produto4.png" alt="Removedor de Barro Grosso" />
+          <img class="rounded" src="produto4.png" alt="Removedor de Barro Grosso" />
           <h3>Removedor de Barro Grosso</h3>
           <p>Proteção para seu veículo</p>
         </article>
 
         <article class="card product">
-          <img class="rounded zoomable" src="produto3.png" alt="Kit Revitalizador" />
+          <img class="rounded" src="produto3.png" alt="Kit Revitalizador" />
           <h3>Kit Revitalizador</h3>
           <p>Limpeza completa dos plásticos</p>
         </article>
 
         <article class="card product">
-          <img class="rounded zoomable" src="produto2.png" alt="Kit Higienização Interna" />
+          <img class="rounded" src="produto2.png" alt="Kit Higienização Interna" />
           <h3>Kit Higienização Interna</h3>
           <p>Limpeza completa de bancos e estofados</p>
         </article>
@@ -149,38 +149,5 @@
       © 2026 Barcelos Garage Auto
     </div>
   </footer>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" aria-modal="true" role="dialog" hidden>
-    <button id="lightbox-close" aria-label="Fechar">×</button>
-    <img id="lightbox-img" alt="Imagem ampliada" />
-  </div>
-
-  <script>
-    // Lightbox acessível (abre ao clicar e fecha por botão, fora da imagem ou ESC)
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const lbClose = document.getElementById('lightbox-close');
-
-    // Só imagens com classe .zoomable abrem no lightbox
-    document.querySelectorAll('.zoomable').forEach(el => {
-      el.style.cursor = 'zoom-in';
-      el.addEventListener('click', () => {
-        lbImg.src = el.getAttribute('src');
-        lb.hidden = false;
-        lb.classList.add('open');
-        lbClose.focus();
-      });
-    });
-
-    const closeLB = () => {
-      lb.classList.remove('open');
-      setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 200);
-    };
-
-    lbClose.addEventListener('click', closeLB);
-    lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) closeLB(); });
-  </script>
 </body>
 </html>
