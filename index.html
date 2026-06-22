@@ -228,3 +228,187 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barcelos Garage Auto</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-grid">
+    <span class="brand">Barcelos Garage Auto</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner container">
+    <h1>Estética automotiva premium</h1>
+    <p>Faça seu agendamento abaixo 🔥</p>
+  </div>
+</section>
+
+<!-- SERVIÇOS + FORMULÁRIO -->
+<section class="section" id="servicos">
+  <div class="container">
+
+    <h2 class="center">Agendar serviço</h2>
+
+    <!-- FORMULÁRIO MELHOR -->
+    <div class="card mt-24">
+      <input id="nome" placeholder="Seu nome"
+        style="width:100%;padding:12px;margin-top:10px;border-radius:10px;background:#111;color:#fff;border:1px solid #333;">
+
+      <input id="carro" placeholder="Seu carro"
+        style="width:100%;padding:12px;margin-top:10px;border-radius:10px;background:#111;color:#fff;border:1px solid #333;">
+
+      <input type="date" id="data"
+        style="width:100%;padding:12px;margin-top:10px;border-radius:10px;background:#111;color:#fff;border:1px solid #333;">
+
+      <select id="hora"
+  style="width:100%; padding:12px; margin-top:10px; border-radius:10px; background:#111; color:#fff; border:1px solid #333;">
+
+  <option value="">Escolha um horário</option>
+
+  <option>08:00</option>
+  <option>09:00</option>
+  <option>10:00</option>
+  <option>11:00</option>
+
+  <option>13:00</option>
+  <option>14:00</option>
+  <option>15:00</option>
+  <option>16:00</option>
+  <option>17:00</option>
+  <option>18:00</option>
+
+</select>
+``
+
+      <select id="pagamento"
+        style="width:100%;padding:12px;margin-top:10px;border-radius:10px;background:#111;color:#fff;border:1px solid #333;">
+        <option value="">Forma de pagamento</option>
+        <option>Pix</option>
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+      </select>
+    </div>
+
+    <!-- SERVIÇOS -->
+    <div class="grid cards-3 mt-32">
+
+      <div class="card">
+        <h3>Higienização Completa</h3>
+        <p>R$ 110</p>
+        <button class="btn" onclick="fazerPedido('Higienização Completa',60)">Pedir</button>
+      </div>
+
+      
+      
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LISTA DE PEDIDOS -->
+<section class="section">
+  <div class="container">
+    <h2 class="center">Pedidos recebidos</h2>
+    <div id="listaPedidos"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    © 2026 Barcelos Garage Auto
+  </div>
+</footer>
+
+<!-- FIREBASE -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "leo-77.firebaseapp.com",
+    projectId: "leo-77",
+    storageBucket: "leo-77.appspot.com",
+    messagingSenderId: "SEU_ID",
+    appId: "SEU_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ✅ SALVAR PEDIDO
+  async function fazerPedido(servico, valor) {
+    const nome = document.getElementById("nome").value;
+    const carro = document.getElementById("carro").value;
+    const data = document.getElementById("data").value;
+    const hora = document.getElementById("hora").value;
+    const pagamento = document.getElementById("pagamento").value;
+
+    if (!nome || !carro || !data || !hora || !pagamento) {
+      alert("⚠️ Preencha todos os campos!");
+      return;
+    }
+
+    await addDoc(collection(db, "pedidos"), {
+      cliente: nome,
+      carro,
+      servico,
+      valor,
+      pagamento,
+      data,
+      hora,
+      status: "pendente",
+      criado: new Date()
+    });
+
+    alert("✅ Pedido enviado!");
+
+    document.getElementById("nome").value = "";
+    document.getElementById("carro").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("hora").value = "";
+    document.getElementById("pagamento").value = "";
+  }
+
+  window.fazerPedido = fazerPedido;
+
+  // ✅ MOSTRAR PEDIDOS
+  const lista = document.getElementById("listaPedidos");
+
+  onSnapshot(collection(db,"pedidos"), (snapshot) => {
+    lista.innerHTML = "";
+
+    snapshot.forEach(doc => {
+      const p = doc.data();
+
+      lista.innerHTML += `
+        <div class="card mt-12">
+          <h3>${p.cliente}</h3>
+          <p>🚗 ${p.carro}</p>
+          <p>🧼 ${p.servico}</p>
+          <p>💰 ${p.pagamento}</p>
+          <p>📅 ${p.data} às ${p.hora}</p>
+          <p>📌 ${p.status}</p>
+        </div>
+      `;
+    });
+  });
+</script>
+
+</body>
+</html>
